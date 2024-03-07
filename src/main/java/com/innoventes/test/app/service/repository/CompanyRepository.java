@@ -1,4 +1,4 @@
-package com.innoventes.test.app.repository;
+package com.innoventes.test.app.service.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

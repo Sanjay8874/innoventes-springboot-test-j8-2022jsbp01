@@ -3,6 +3,7 @@ package com.innoventes.test.app.controller;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -87,4 +88,13 @@ public class CompanyController {
 		return messageSource.getMessage(exceptionCode, null, LocaleContextHolder.getLocale());
 	}
 
+	@GetMapping("/companies/{id}")
+	public ResponseEntity<CompanyDTO> getById(@PathVariable(value = "id") Long id) {
+		Optional<Company> dto = companyService.getbyID(id);
+
+		if (dto.isPresent()){
+			ResponseEntity.ok(dto);
+		}
+		return (ResponseEntity<CompanyDTO>) ResponseEntity.status(HttpStatus.NOT_FOUND);
+	}
 }
